@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -44,6 +45,8 @@ public class Generator {
             numberType = isState(SelectType("NumberType"));
             capitalLetter = isState(SelectType("CapitalLetterType"));
             smallLetter = isState(SelectType("SmallLetterType"));
+            System.out.println(" Enter password length :) ");
+            // TODO 长度判断是否合法
             passWordLength = keyborad.nextInt();
 
             TypeError = !numberType && !capitalLetter && !smallLetter && passWordLength > 0;
@@ -52,12 +55,29 @@ public class Generator {
 
         final Generator generator = new Generator(numberType, capitalLetter, smallLetter);
 
+        // 生成密码
         generator.compoundPassWord(passWordLength);
+
         end();
     }
 
 
     private void compoundPassWord(int length) {
+
+        String initPassWord = passwordData.getPassWord();
+
+        int initPassWordMaxLength = initPassWord.length();
+        int initPassWordMinLength = 0;
+
+        System.out.println();
+        System.out.print("Your PassWord:  ");
+        while (length != 0) {
+            int randomNumber = new Random().nextInt(initPassWordMaxLength - initPassWordMinLength + 1) + initPassWordMinLength;
+            System.out.print(initPassWord.charAt(randomNumber));
+            length--;
+        }
+        System.out.println();
+        System.out.println(":) Done");
     }
 
     private String SelectType(String Type) {
