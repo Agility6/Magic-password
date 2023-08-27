@@ -67,12 +67,12 @@ public class Generator {
         String initPassWord = passwordData.getPassWord();
 
         int initPassWordMaxLength = initPassWord.length();
-        int initPassWordMinLength = 0;
 
         System.out.println();
-        System.out.print("Your PassWord:  ");
+        System.out.println("Your PassWord:  ");
+        System.out.print("  ");
         while (length != 0) {
-            int randomNumber = new Random().nextInt(initPassWordMaxLength - initPassWordMinLength + 1) + initPassWordMinLength;
+            int randomNumber = new Random().nextInt(initPassWordMaxLength - 1);
             System.out.print(initPassWord.charAt(randomNumber));
             length--;
         }
